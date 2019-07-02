@@ -20,10 +20,10 @@ def on_connect(client, userdata, flags, rc):
 
 #This function is responsible for displaying the recieved data
 def on_message(client, userdata, msg):
-    url="http://192.168.43.58:5000/"
+    url="http://---IP Address of the Flask app---:5000/" #  Please edit this
     #instantiating the weather api object
-    owm = pyowm.OWM('1564849dab31cdfad3ab802cf5cfe045')
-    observation = owm.weather_at_place("Puducherry,india")
+    owm = pyowm.OWM('------API Token-------') # Please edit this
+    observation = owm.weather_at_place("Puducherry,india")  # Please edit the place
     w = observation.get_weather()
     print(w)
     global state
@@ -58,7 +58,7 @@ def on_message(client, userdata, msg):
         names = ['soilmoisture','temp','press','hum','status','class']
 
         # Read dataset to pandas dataframe
-        dataset = pd.read_csv('/home/sagar/vir-envprog/sensordata.csv', names=names)
+        dataset = pd.read_csv('....../sensordata.csv', names=names)
         # print(dataset.head())
         # print(dataset.describe())
 
@@ -106,7 +106,7 @@ def main():
     client = mqtt.Client()
     client.on_connect = on_connect
     client.on_message = on_message
-    client.connect("192.168.43.58", 1883, 60)
+    client.connect("--- Broker's IP Address---", 1883, 60) #If you are broker as well as the second client( apart from nodeMCU) then type your IP Address 
     client.loop_start()
 
 
