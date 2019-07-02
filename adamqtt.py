@@ -24,8 +24,8 @@ def cb(topic, msg):
         pass
 
 # WiFi connection information
-WIFI_SSID = 'iot'
-WIFI_PASSWORD = '9463758467'
+WIFI_SSID = '---Your Hotspot / Wi-Fi ID---' # Please edit this so that your esp8266 can connect to the network
+WIFI_PASSWORD = '--- Password ---'  # Please edit it
 
 # turn off the WiFi Access Point
 ap_if = network.WLAN(network.AP_IF)
@@ -57,11 +57,11 @@ mqtt_client_id = bytes('client_'+str(random_num), 'utf-8')
 #   set MQTTClient initializer parameter to "ssl=True"
 #   Caveat: a secure connection uses about 9k bytes of the heap
 #         (about 1/4 of the micropython heap on the ESP8266 platform)
-URL = b'192.168.43.58'
-USERNAME=b'sagar'
+URL = b' URL or IP Address of the Broker' #Please edit this
+USERNAME=b'sagar' # Please edit this
 
-SOIL_FEED = b'soilmoisture'
-RESPONSE_FEED=b'waterplant'
+SOIL_FEED = b'soilmoisture' # Topic for publishing Data
+RESPONSE_FEED=b'waterplant' # Topic for recieving Data
 
 client = MQTTClient(client_id=mqtt_client_id,server=URL)
 
